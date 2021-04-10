@@ -8,7 +8,6 @@
         @else
             <h1>Ваши сокращенные ссылки к вашим услугам</h1>
         @endif
-
         <div class="card">
             <div class="card-header">
                 <form method="POST" action="{{ route('generate.shorten.link.post') }}">
