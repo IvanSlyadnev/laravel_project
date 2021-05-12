@@ -11,6 +11,10 @@ class User extends Authenticatable
     public $timestamps = false;
     use Notifiable;
 
+    public function urls() {
+        return $this->hasMany('App\Url');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

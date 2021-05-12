@@ -10,7 +10,7 @@
         @endif
         <div class="card">
             <div class="card-header">
-                <form method="POST" action="{{ route('generate.shorten.link.post') }}">
+                <form method="POST" action="{{ route('urls.store') }}">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Name">
@@ -68,19 +68,22 @@
                             <td>{{$index+1}}</td>
                             <td>{{$link->name}}</td>
                             <td>
-                                <a href="{{ route('shorten.link', $link->short_code) }}"
-                                   target="_blank">{{route('shorten.link', $link->short_code)}}</a>
+                                <a href="{{ route('urls.show', $link->short_code) }}"
+                                   target="_blank">{{route('urls.show', $link->short_code)}}</a>
                                 <!-- */*/-->
                             </td>
                             <td>{{ $link->url}}</td>
                             <td>{{ $link->counter }}</td>
-                            <td><a href="{{route('link.delete', $link->id)}}">
-                                    <button class="btn btn-danger">Удалть</button>
-                                </a></td>
+                            <td>
+                                {!! Form::open(['method' => 'delete', 'route' => ['urls.destroy', $link->short_code]]) !!}
+                                    <button class="btn btn-danger" onclick="confirm('вы уверены?')">Удалить</button>
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                {{ $shortLinks->onEachSide(2)->links('vendor/pagination/bootstrap-4') }}
 
             </div>
         </div>

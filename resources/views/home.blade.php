@@ -17,13 +17,12 @@ use \Illuminate\Support\Facades\Auth;
                             {{ session('status') }}
                         </div>
                     @endif
-
                     @guest
                             Добропожаловать на нашем сайте, для работы с сокращателем ссылок, пожалуйста зарегиструруйтесь
                             <a href="{{route('login')}}"><button class="btn-info">Авторизация</button></a>
                         @else
                             Вы зарегистрированы как {{Auth::user()->email}}
-                            <a class="btn btn-success" href="{{route('generate.shorten.link')}}">Сокращатель ссылок</a>
+                            <a class="btn btn-success" href="{{route('urls.index')}}">Сокращатель ссылок</a>
                     @endguest
 
                 </div>
