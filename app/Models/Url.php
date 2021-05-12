@@ -33,5 +33,4 @@ class Url extends Model
             return $user->urls()->create($data);
         } else return null;
     }
-
 }
